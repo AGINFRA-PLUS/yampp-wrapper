@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Upload Files</title>
+
+</head>
+
+<body>
+	<div class="container" style="text-align:center">
+		<form action="matcherinterface" method="post" enctype="multipart/form-data" name="form" onsubmit="return  validateForm()">
+
+		  <p></p>
+		  <br><br>
+
+		  <div class="alert alert-warning" role="alert">
+			<b>SKOS</b> scheme are converted to OWL (currently supported by YAM++), so mind that the semantics may be slightly altered (skos:broader and skos:narrower to owl:subClassOf). <br>
+			<b>OBO</b> format is currently  <b>not supported</b>
+		  </div>
+
+		  <!-- The user can provide ontologies from URL or by uploading a file -->
+		  <div class="row">
+			
+			<div class="col-md-6" style="border-right: 1px solid #ccc;">
+
+			  <h3>Source</h3>
+
+			  <label for="sourceUrl">Source file</label> <br>
+			  <input type="url" class="ontologyUrl" id="sourceUrl" name="sourceUrl" placeholder="Enter ontology URL">
+
+			  <br><span style="text-align: center">or</span><br>
+
+			  <label class="btn btn-info btn-file" title="Accepting ontology files of following extensions: .owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd">
+				Choose file
+				<input id="sourceFile" type="file" name="sourceFile" accept=".owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd" onchange="refreshFileUpload('sourceFile', 'sourceFilename');" style="display: none;">
+			  </label> 
+			  <a class="infolink" title="Accepting ontology files of following extensions: .owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd" target="_blank"></a>
+			  <br>
+			  <label id="sourceFilename" style="font-weight: normal;"></label>
+			</div>
+
+			<div class="col-md-6">
+			  <h3>Target</h3>
+
+			  <label for="targetUrl">Target file</label> <br>
+			  <input type="url" class="ontologyUrl" id="targetUrl" name="targetUrl" placeholder="Enter ontology URL">
+			  <br>
+			  <span style="text-align: center">or</span> <br>
+			  <label class="btn btn-info btn-file" title="Accepting ontology files of following extensions: .owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd">
+				Choose file
+				<input id="targetFile" type="file" name="targetFile" accept=".owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd" onchange="refreshFileUpload('targetFile', 'targetFilename');" style="display: none;">
+			  </label>
+			  <a class="infolink" title="Accepting ontology files of following extensions: .owl, .rdf, .nt, .ttl, .jsonld, .json, .xml, .xsd" target="_blank"></a>
+			  <br>
+			  <label id="targetFilename" style="font-weight: normal;"></label>
+
+			</div>
+		  </div>
+		  <br>
+		  <input id = "submitMatcher" class="btn btnSubmit" type="submit" name="submit" value="Match">
+		  <div id="yampp-loader" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+		</form>
+	</div>
+
+	<script src="./js/upload.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+@CHARSET "ISO-8859-1";
+
+/*
+Used colors:
+Text:    #719eb7;
+Dark:    #8ab7d1;
+Middle:  #d8e7ef;
+Light:   #f2f7f9;
+Orange:  #f08b80;
+Yellow:  #ffd024;
+
+Font for "YAM++": Revue
+
+Different colors are available for the loading .gif 
+Find them in: 'images/loading-X.gif'
+X can be 'black', 'orange', 'blue' or 'green'
+To get all the colors/sizes: www.mytreedb.com/view_blog/a-33-high_quality_ajax_loader_images.html
+*/
+html,body {
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  /*height: 100%;*/
+  font-family: Arial;
+}
+
+a {
+  color: #719eb7;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #719eb7;
+}
+
+/* To generate a ? in a circle (for info), see validator */
+.infolink:before
+{
+    content: '?';
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 1.8ex;
+    height: 1.8ex;
+    font-size: 1.4ex;
+    line-height: 1.8ex;
+    border-radius: 1.2ex;
+    margin-right: 4px;
+    padding: 1px;
+    color: blue;
+    background: white;
+    border: 1px solid blue;
+    text-decoration: none;
+    box-sizing: content-box;
+}
+
+.infolink:hover:before
+{
+    color: white;
+    background: blue;
+    border-color: white;
+    text-decoration: none;
+}
+
+/* To display when radio btn is checked when choosing a format */
+.inputFormatAlignmentAPI:checked + .inputFormatAlignmentAPILabel {
+  font-weight: bold;
+  background: #f08b80;
+  font-size: 16px;
+}
+.inputFormatSimpleRDF:checked + .inputFormatSimpleRDFLabel {
+  font-weight: bold;
+  background: #f08b80;
+  font-size: 16px;
+}
+.inputFormatRDF:checked + .inputFormatRDFLabel {
+  font-weight: bold;
+  background: #f08b80;
+  font-size: 16px;
+}
+
+/* bootstrap container that is used to build the main div */
+.container {
+  background-color: white;
+  padding-right: 0px;
+  padding-left: 0px;
+  /* Here to change the size of the 2 columns around main div: */
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 2%;
+}
+
+.errorMsg {
+  text-align: center;
+  color: black;
+  margin: 4% 10% 4% 10%;
+}
+
+/* Max Width of the popover (depending on the container!). Set to 25% of the middle div
+Can't be more to not go outside of window (since it is on the right of the mid div)'
+.popover{
+  max-width: 25%;
+}*/
+
+.btn:hover,.btnBig:hover {
+  background: #f08b80;
+  text-decoration: none;
+}
+
+.btnBig {
+  color: #ffffff;
+  font-size: 20px;
+  background: #8ab7d1;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border: none;
+  width: 40%;
+  cursor: pointer;
+  margin-left: 30%;
+  margin-top: 3%;
+}
+
+.btnCenter {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.btnMatch {
+  text-align: center;
+  margin-top: 10%;
+}
+
+/* Change input url for ontologies to make it bigger*/
+.ontologyUrl {
+  width: 80%;
+}
+
+.changePassword {
+  margin-left: 10%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.chartdiv {
+  width: 100%;
+  height: 91%;
+  overflow: auto;
+  border-top: 2px solid #719eb7;
+}
+
+.chart {
+  width: 95%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contactName {
+  margin-left: 3%;
+  margin-right: 2%;
+  font-size: 19px;
+  color: #719eb7;
+  display: inline;
+}
+
+.contactUs {
+  width: 100%;
+  padding-bottom: 1%;
+  display: inline-block;
+  background-color: #d8e7ef;
+  text-align: center;
+}
+
+.contentCenter {
+  text-align: center;
+}
+
+.contentParagraph {
+  text-align: justify;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+.contentText {
+  text-align: center;
+  font-size: 19px;
+  color: #719eb7;
+}
+
+.contentTime {
+  margin-bottom: 0;
+}
+
+/* Header and footer */
+header ,
+footer {
+  background: #8ab7d1;
+  /*min-height: 8vh;*/
+  /* TODO: fix this position in every page (only good in validation))
+  position: fixed;*/
+  z-index: 10;
+  width: 100%;
+}
+header {
+  top:0;
+}
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 5px 0 0 0;
+}
+.main-nav li {
+  list-style-type: none;
+  font-size: 1.2em;
+}
+.main-nav a {
+  padding: 10px 1.5em;
+  color: #f2f7f9;
+  border-right: 1px solid #f2f7f9;
+}
+.main-nav a:hover,
+.main-nav a:focus,
+.main-nav .active a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 5%;
+  background-color: #8ab7d1;
+  color: #f2f7f9;
+  background-color: #8ab7d1;
+  text-align: center;
+}
+
+.footerText {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.footerImg {
+  /* couldn't get height work with % so using px */
+  height: 50px;
+  max-height:100%;
+  padding-left: 1%;
+}
+
+.form {
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.btnSubmit {
+  font-size: 20px;
+  background: rgba(92, 183, 92, 0.65);
+  color: white;
+  margin-bottom: 10%;
+}
+
+p {
+  margin: 1%;
+}
+
+h1 {
+  margin-left: 5%;
+  color: #719eb7;
+}
+
+h2 {
+  text-align: center;
+  color: #719eb7;
+  font-size: 25px;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+
+h3 {
+  color: #719eb7;
+}
+
+h4 {
+  margin-left: 2%;
+}
+
+pre {
+  margin: 2%;
+}
+
+hr {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 1%;
+  color: #d8e7ef;
+}
+
+input[type="button"] {
+  cursor: pointer;
+}
+
+.logoIndex {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
+  height: 200px;
+  width: auto;
+}
+
+.indexLogoDiv {
+  padding-top: 1%;
+  padding-bottom: 2%;
+  text-align: center;
+  background-color: #d8e7ef;
+  width: 100%;
+  display: inline-block;
+}
+
+.indexContentDiv {
+  text-align: justify;
+  width: 100%;
+  height: 65%;
+}
+
+.indexContent {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.indexPage {
+  width: 100%;
+  height: 84%;
+}
+
+.nav {
+  background: #8ab7d1;
+  color: #f2f2f2;
+  font-size: 25px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+#nav li#active {
+  background-color: #f0b000;
+  color: #ffffff;
+}
+
+ul#nav-box {
+  padding: 0 0 1% 0;
+  margin: 0;
+  list-style-type: none;
+  color: #f2f7f9;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+ul#nav-box li {
+  display: inline;
+  padding: 5px 0;
+}
+
+ul#nav-box li a {
+  padding: 5px 1em 5px 1em;
+  color: #f2f7f9;
+  text-decoration: none;
+  border-right: 1px solid #fff;
+}
+
+ul#nav-box li a:hover {
+  color: #d8e7ef;
+}
+
+.navLogo {
+  height: 55px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#overlay:target {
+  display: block;
+}
+
+.popup_block {
+  background: #fff;
+  padding: 20px;
+  padding-bottom: 5px;
+  border: 20px solid #8ab7d1;
+  position: relative;
+  margin: 10% auto;
+  width: 40%;
+  box-shadow: 0px 0px 20px #000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup_text {
+  font-family: Arial;
+  color: #719eb7;
+  font-size: 17px;
+  margin-top: 20px;
+}
+
+.publicationButton {
+  border: none;
+  width: 200px;
+  display: inline-block;
+  padding: 7px 10px 11px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  background: #f08b80;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  -webkit-border-radius: 20px 5px 20px;
+  -moz-border-radius: 20px 5px 20px;
+  border-radius: 20px 5px 20px;
+}
+
+.textMainBody {
+  text-align: justify;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
+  padding-top: 2%;
+}
+
+.btnDdl {
+  font-size: 20px; 
+  background: #f08b80;
+  color: white;
+}
+
+.signup,.signin {
+  margin-top: 3%;
+  margin-left: 7%;
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+}
+
+.signup {
+  border-right: 2px solid #719eb7;
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.tabDiv {
+  height: 450px;
+  overflow: auto;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* TODO: REMOVE? not used anymore */
+.entityDetailsDiv {
+  width: 100%;
+  max-width: 100%;
+  height: 50%;
+  max-height: 50%;
+  overflow-y: auto;
+  background-color: white;
+}
+
+td,th {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  /*width: 15%; we want the width to be set dynamically with the content*/
+  height: 50%;
+}
+
+th {
+  height: 40px;
+  background: #8ab7d1;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr.white {
+  background-color: #ffffff;
+}
+
+tr.grey {
+  background-color: #f2f2f2;
+}
+
+.valueDiv {
+  text-align: center;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.value {
+  margin-left: 3%;
+  margin-right: 2%;
+  display: inline;
+  font-size: 20px;
+  display: inline;
+  color: #719eb7;
+}
+
+.yellow {
+  height: 1%;
+  width: 100%;
+  background-color: #ffde65;
+}
+
+.selected {
+  color: #fcfcfc;
+  background-color: #8ab7d1  !important;
+}
+
+.lds-ring {
+  display: none;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid rgba(92, 183, 92, 0.65);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgba(92, 183, 92, 0.65) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
